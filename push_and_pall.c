@@ -47,3 +47,25 @@ void my_push_func(stack_t **stack, unsigned int line_num)
 	else
 		addqueue(stack, integer_to_push);
 }
+
+
+
+/**
+ * my_pall_func - Print all elements of the stack
+ * @stack: Pointer to the stack
+ * @line_num: Line number in the input file (unused)
+*/
+void my_pall_func(stack_t **stack, unsigned int line_num)
+{
+	stack_t *current = *stack; /*Pointer to traverse the stack*/
+	(void)line_num; /* Unused parameter*/
+
+	if (current == NULL) /*If the stack is empty, return*/
+		return;
+
+	while (current) /* Iterate through the stack*/
+	{
+		printf("%d\n", current->n); /*Print the value of the current node*/
+		current = current->next; /* Move to the next node*/
+	}
+}
