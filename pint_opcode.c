@@ -2,7 +2,7 @@
 /**
  * my_pint_func - This is the entry point
  * @stack:This is the stack head
- * @line_num: The line_number
+ * @line_num:This is The line_number
 */
 void my_pint_func(stack_t **stack, unsigned int line_num)
 {
