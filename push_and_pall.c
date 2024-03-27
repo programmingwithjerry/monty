@@ -38,7 +38,7 @@ void my_push_func(stack_t **stack, unsigned int line_num)
 			fclose(bus.file);
 		if (bus.content)
 			free(bus.content);
-		free_stack(*stack);
+		my_free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	integer_to_push = atoi(bus.arg);

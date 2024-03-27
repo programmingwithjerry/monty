@@ -1,12 +1,12 @@
 #include "monty.h"
 
 /**
- * free_stack - Function to free memory allocated for a stack
+ * my_free_stack - Function to free memory allocated for a stack
  * @head: Pointer to the head of the stack
  */
 
 
-void free_stack(stack_t *head)
+void my_free_stack(stack_t *head)
 {
 	stack_t *current; /*Pointer to traverse the stack*/
 

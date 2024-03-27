@@ -56,8 +56,9 @@ typedef struct bus_s
 extern bus_t bus;
 
 void my_push_func(stack_t **stack, unsigned int line_num);
-void free_stack(stack_t *head);
+void my_free_stack(stack_t *head);
 void my_pall_func(stack_t **stack, unsigned int line_num);
+void my_pint_func(stack_t **stack, unsigned int line_num);
 
 
 #endif
