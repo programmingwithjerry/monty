@@ -6,7 +6,7 @@
  */
 
 
-void my_free_stack(stack_t *head)
+void free_stack(stack_t *head)
 {
 	stack_t *current; /*Pointer to traverse the stack*/
 

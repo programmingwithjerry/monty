@@ -1,71 +1,80 @@
 #include "monty.h"
 
 /**
- * my_push_func - Function to push an integer onto a stack
- * @stack: Pointer to the stack
- * @line_num: The line number in the input file
- */
+*push_integer - Inserts a new node containing the
+*specified integer onto the stack.
+*@head: Pointer to the top of the stack.
+*@counter: Line number at which the operation is invoked.
+*Return: This function does not return any value.
+*/
 
-
-void my_push_func(stack_t **stack, unsigned int line_num)
+void push_integer(stack_t **head, unsigned int counter)
 {
-	int integer_to_push;
-	int i = 0;
-	int flag = 0;
+	int number, j = 0, flag = 0;
 
-	if (!bus.arg)
+	/*Check if bus.arg is not NULL*/
+	if (shared_info.arg)
 	{
-		flag = 1; /*Treat missing argument as invalid*/
-	}
-	else
-	{
-		for (; bus.arg[i] != '\0'; i++)
+		if (shared_info.arg[0] == '-')
+			j++;
+		/*Check if the argument is a valid integer*/
+		for (; shared_info.arg[j] != '\0'; j++)
 		{
-			if (!isdigit(bus.arg[i]))
-			{
-				flag = 1; /*Non-digit character found*/
-				break;
-			}
+			if (shared_info.arg[j] > 57 || shared_info.arg[j] < 48)
+				flag = 1;
+		}
+		/* Error if argument is not a valid integer*/
+		if (flag == 1)
+		{
+			fprintf(stderr, "L%d: usage: push integer\n", counter);
+			fclose(shared_info.file);
+			free(shared_info.content);
+			free_stack(*head);
+			exit(EXIT_FAILURE);
 		}
 	}
-
-	if (flag)
+	else
 	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_num);
-		if (bus.arg)
-			free(bus.arg);
-		if (bus.file)
-			fclose(bus.file);
-		if (bus.content)
-			free(bus.content);
-		my_free_stack(*stack);
+		/*Error if no argument provided*/
+		fprintf(stderr, "L%d: usage: push integer\n", counter);
+		fclose(shared_info.file);
+		free(shared_info.content);
+		free_stack(*head);
 		exit(EXIT_FAILURE);
 	}
-	integer_to_push = atoi(bus.arg);
-	if (bus.life_cycle == 0)
-		addnode(stack, integer_to_push);
+	number = atoi(shared_info.arg);
+	/*Add node to the stack or queue based on bus.lifi*/
+	if (shared_info.lifi == 0)
+		add_node_to_stack(head, number);
 	else
-		addqueue(stack, integer_to_push);
+		add_queue(head, number);
 }
+
 
 
 
 /**
- * my_pall_func - Print all elements of the stack
- * @stack: Pointer to the stack
- * @line_num: Line number in the input file (unused)
-*/
-void my_pall_func(stack_t **stack, unsigned int line_num)
+ * print_stack - Prints all elements in the stack.
+ * @head: Pointer to the top of the stack.
+ * @counter: Line number where the operation is called (unused).
+ */
+void print_stack(stack_t **head, unsigned int counter)
 {
-	stack_t *current = *stack; /*Pointer to traverse the stack*/
-	(void)line_num; /* Unused parameter*/
+	stack_t *current;
 
-	if (current == NULL) /*If the stack is empty, return*/
+	(void)counter; /*Unused parameter*/
+
+	current = *head;
+
+	/* Check if the stack is empty*/
+	if (current == NULL)
 		return;
 
-	while (current) /* Iterate through the stack*/
+	/* Iterate through the stack and print each element*/
+	while (current != NULL)
 	{
-		printf("%d\n", current->n); /*Print the value of the current node*/
-		current = current->next; /* Move to the next node*/
+		printf("%d\n", current->n);
+		current = current->next;
 	}
 }
+
