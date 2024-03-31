@@ -32,7 +32,7 @@ void print_char(stack_t **head, unsigned int line_number)
 	if (current->n > 127 || current->n < 0)
 	{
 		/*Print error message and exit if value is out of range*/
-		fprintf(stderr, "L%d: can't pchar, value not in stack\n", line_number);
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
 		fclose(shared_info.file);
 		free(shared_info.content);
 		free_stack(*head);
