@@ -57,12 +57,13 @@ void push_integer(stack_t **head, unsigned int counter)
  * print_stack - Prints all elements in the stack.
  * @head: Pointer to the top of the stack.
  * @counter: Line number where the operation is called (unused).
+ * unsigned int counter
  */
 void print_stack(stack_t **head, unsigned int counter)
 {
 	stack_t *current;
 
-	(void)counter; /*Unused parameter*/
+	(void)counter; /*Unused parameter, simply to satisfy compiler*/
 
 	current = *head;
 
