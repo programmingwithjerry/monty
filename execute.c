@@ -21,7 +21,7 @@ int execute(char *content, stack_t **stack, unsigned int line_num, FILE *file)
 		{"nop", perform_no_operation}, {"sub", subtract_top_two_elements},
 		{"div", divide_top_two_elements}, {"mul", multiply_top_two_elements},
 		{"mod", perform_modulo_operation}, {"pchar", print_char},
-		{"pstr", print_top_char}, {"rotl", rotate_left},
+		{"pstr", print_ascii_characters}, {"rotl", rotate_left},
 		{"rotr", rotate_right}, {"queue", set_queue_mode},
 		{"stack", set_stack_mode},
 		{NULL, NULL}

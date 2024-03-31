@@ -84,7 +84,7 @@ void multiply_top_two_elements(stack_t **head, unsigned int counter);
 /*void perform_multiplication(stack_t **head, unsigned int line_number);*/
 void perform_modulo_operation(stack_t **head, unsigned int line_number);
 void print_char(stack_t **head, unsigned int line_number);
-void print_top_char(stack_t **head, unsigned int line_number);
+void print_ascii_characters(stack_t **stack_head, unsigned int line_number);
 void rotate_left(stack_t **head, __attribute__((unused)) unsigned int counter);
 void rotate_right(stack_t **head, __attribute__((unused)) unsigned int counter);
 void add_node_to_stack(stack_t **head, int value);

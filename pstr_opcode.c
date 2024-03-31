@@ -2,42 +2,38 @@
 
 
 /**
- * print_top_char - Prints the character at the top of the stack.
- * @head: Pointer to the top of the stack.
- * @line_number: Line number where the operation is called.
- * This function prints the character at the top of the stack. If the
- * stack is empty or
- * the value is out of the ASCII range, it prints an error message
- * and exits the program.
+ * print_ascii_characters - Prints the string from the top of
+ * the stack to the end, terminated by a new line.
+ * @stack_head: Pointer to the head of the stack.
+ * @line_number: The line number where the operation is called.
+ * Return: No return value.
  */
-void print_top_char(stack_t **head, unsigned int line_number)
+
+
+
+void print_ascii_characters(stack_t **stack_head, unsigned int line_number)
 {
+	/* Declare variables */
 	stack_t *current;
+	/* Unused parameter (line_number) */
+	(void)line_number;
 
-	/*Set the current pointer to point to the top of the stack*/
-	current = *head;
+	/* Set current_node to the head of the stack */
+	current = *stack_head;
 
-	/*Check if the stack is empty*/
-	if (!current)
+	/* Iterate through the stack and print ASCII characters */
+	while (current && current->n != 0 && current->n >= 0 && current->n <= 127)
 	{
-		/*Print error message and exit if stack is empty*/
-		fprintf(stderr, "L%d: can't pstr, stack is empty\n", line_number);
-		fclose(shared_info.file);
-		free(shared_info.content);
-		free_stack(*head);
-		exit(EXIT_FAILURE);
+		printf("%c", current->n);
+		current = current->next;
 	}
 
-	/*Check if the value is out of the ASCII range*/
-	if (current->n > 127 || current->n < 0)
+	/* If the stack is empty, print a newline and return */
+	if (current == NULL)
 	{
-		/*Print error message and exit if value is out of range*/
-		fprintf(stderr, "L%d: can't pstr, value not in stack\n", line_number);
-		fclose(shared_info.file);
-		free(shared_info.content);
-		free_stack(*head);
-		exit(EXIT_FAILURE);
+		printf("\n");
+		return;
 	}
-	/*Print the character at the top of the stack*/
-	printf("%c\n", current->n);
+
+	printf("\n");
 }

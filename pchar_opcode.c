@@ -17,7 +17,6 @@ void print_char(stack_t **head, unsigned int line_number)
 	/*Set the current pointer to point to the top of the stack*/
 	current = *head;
 	/*Check if the value is out of the ASCII range*/
-	/*Check if the value is out of the ASCII range*/
 	if (current->n > 127 || current->n < 0)
 	{
 		/*Print error message and exit if value is out of range*/
