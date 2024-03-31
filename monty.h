@@ -81,7 +81,6 @@ void perform_no_operation(stack_t **head, unsigned int counter);
 void subtract_top_two_elements(stack_t **head, unsigned int counter);
 void divide_top_two_elements(stack_t **head, unsigned int counter);
 void multiply_top_two_elements(stack_t **head, unsigned int counter);
-/*void perform_multiplication(stack_t **head, unsigned int line_number);*/
 void perform_modulo_operation(stack_t **head, unsigned int line_number);
 void print_char(stack_t **head, unsigned int line_number);
 void print_ascii_characters(stack_t **stack_head, unsigned int line_number);
